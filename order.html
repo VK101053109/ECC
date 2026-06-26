@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Order a Service | ECC</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script defer src="order.js"></script>
+</head>
+<body class="page-shell">
+    <nav class="navbar navbar-inverse navbar-fixed-top site-nav">
+        <div class="page-container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="about.html">ECC</a>
+            </div>
+            <div class="collapse navbar-collapse" id="mynavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="order.html">Order our services</a></li>
+                    <li><a href="order2.html">Orders</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="page-container">
+        <section class="hero">
+            <div>
+                <p class="hero-eyebrow">Order a service</p>
+                <h1>Choose one job or move to the bundle form.</h1>
+                <p class="lead-copy">
+                    Start with the basic order form if you need a single service.
+                    If the request includes more than one task, switch to the multi-service page.
+                </p>
+                <div class="hero-actions">
+                    <button type="button" class="btn btn-accent" onclick="order()">Place one-service order</button>
+                    <button type="button" class="btn btn-outline-accent" onclick="m()">Need multiple services</button>
+                </div>
+                <div id="formMessage" class="message-line"></div>
+            </div>
+
+            <div class="summary-card">
+                <h3>Available services</h3>
+                <ul class="story-list">
+                    <li>Water plants.</li>
+                    <li>Plant flowers and other plants.</li>
+                    <li>Rake leaves.</li>
+                    <li>Kill weeds.</li>
+                    <li>Mow lawn.</li>
+                    <li>Repel mosquitoes.</li>
+                    <li>Shovel snow.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="form-shell">
+            <div class="form-card">
+                <div class="section-heading">
+                    <p class="section-kicker">Single-service request</p>
+                    <h2 class="section-title">Tell ECC what to handle.</h2>
+                    <p class="section-copy">Fill out the details below, choose one service, and place the order.</p>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="u_name">Name</label>
+                        <input id="u_name" class="form-control" type="text" placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="e_mail">Email</label>
+                        <input id="e_mail" class="form-control" type="email" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label for="address">Address</label>
+                        <input id="address" class="form-control" type="text" placeholder="Enter the service address">
+                    </div>
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label for="o_order">Choose one service</label>
+                        <select id="o_order">
+                            <option value="none">Select one service</option>
+                            <option value="Water plants">Water plants</option>
+                            <option value="Plant flowers and plants">Plant flowers and plants</option>
+                            <option value="Rake leaves">Rake leaves</option>
+                            <option value="Kill weeds">Kill weeds</option>
+                            <option value="Mow lawn">Mow lawn</option>
+                            <option value="Repel mosquitoes">Repel mosquitoes</option>
+                            <option value="Shovel snow">Shovel snow</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label for="order_notes">Notes</label>
+                        <textarea id="order_notes" placeholder="Add any helpful details about the request"></textarea>
+                        <div class="form-help">Include timing, property details, or anything else that helps.</div>
+                    </div>
+                </div>
+
+                <div class="hero-actions">
+                    <button type="button" class="btn btn-accent" onclick="order()">Submit order</button>
+                    <button type="button" class="btn btn-outline-accent" onclick="m()">Choose multiple services</button>
+                </div>
+            </div>
+        </section>
+
+        <div class="footer-band">
+            <strong>ECC</strong> will show a confirmation page after submission.
+        </div>
+    </main>
+</body>
+</html>

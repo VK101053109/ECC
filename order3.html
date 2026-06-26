@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Multiple Services | ECC</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script defer src="order.js"></script>
+</head>
+<body class="page-shell">
+    <nav class="navbar navbar-inverse navbar-fixed-top site-nav">
+        <div class="page-container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="about.html">ECC</a>
+            </div>
+            <div class="collapse navbar-collapse" id="mynavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="order.html">Order our services</a></li>
+                    <li><a href="order2.html">Orders</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="page-container">
+        <section class="hero">
+            <div>
+                <p class="hero-eyebrow">Multiple services</p>
+                <h1>Build a bundle that matches the whole job.</h1>
+                <p class="lead-copy">
+                    Use this page when the request includes more than one task.
+                    The options stay written out so you can choose exactly what you need.
+                </p>
+                <div class="hero-actions">
+                    <button type="button" class="btn btn-accent" onclick="order()">Submit bundle</button>
+                    <button type="button" class="btn btn-outline-accent" onclick="coo()">Back to single service</button>
+                </div>
+                <div id="formMessage" class="message-line"></div>
+            </div>
+
+            <div class="summary-card">
+                <h3>Bundle options</h3>
+                <ul class="story-list">
+                    <li>Water plants.</li>
+                    <li>Plant flowers and other plants.</li>
+                    <li>Rake leaves.</li>
+                    <li>Kill weeds.</li>
+                    <li>Mow lawn.</li>
+                    <li>Repel mosquitoes.</li>
+                    <li>Shovel snow.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="form-shell">
+            <div class="form-card">
+                <div class="section-heading">
+                    <p class="section-kicker">Multi-service request</p>
+                    <h2 class="section-title">Choose every task that applies.</h2>
+                    <p class="section-copy">Select one or more services, then submit the bundle order.</p>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="u_name">Name</label>
+                        <input id="u_name" class="form-control" type="text" placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="e_mail">Email</label>
+                        <input id="e_mail" class="form-control" type="email" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label for="address">Address</label>
+                        <input id="address" class="form-control" type="text" placeholder="Enter the service address">
+                    </div>
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label>Services</label>
+                        <div class="service-grid">
+                            <label class="service-option">
+                                <input type="checkbox" name="service_option" value="Water plants">
+                                <strong>Water plants</strong>
+                                <span>Keep plants hydrated and healthy.</span>
+                            </label>
+                            <label class="service-option">
+                                <input type="checkbox" name="service_option" value="Plant flowers and plants">
+                                <strong>Plant flowers and plants</strong>
+                                <span>Add flowers or small plants to the space.</span>
+                            </label>
+                            <label class="service-option">
+                                <input type="checkbox" name="service_option" value="Rake leaves">
+                                <strong>Rake leaves</strong>
+                                <span>Clear seasonal leaf buildup from the yard.</span>
+                            </label>
+                            <label class="service-option">
+                                <input type="checkbox" name="service_option" value="Kill weeds">
+                                <strong>Kill weeds</strong>
+                                <span>Remove unwanted weeds from the property.</span>
+                            </label>
+                            <label class="service-option">
+                                <input type="checkbox" name="service_option" value="Mow lawn">
+                                <strong>Mow lawn</strong>
+                                <span>Keep the grass trimmed and tidy.</span>
+                            </label>
+                            <label class="service-option">
+                                <input type="checkbox" name="service_option" value="Repel mosquitoes">
+                                <strong>Repel mosquitoes</strong>
+                                <span>Help keep mosquitoes away from the house.</span>
+                            </label>
+                            <label class="service-option">
+                                <input type="checkbox" name="service_option" value="Shovel snow">
+                                <strong>Shovel snow</strong>
+                                <span>Clear snow from paths and key areas.</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label for="order_notes">Notes</label>
+                        <textarea id="order_notes" placeholder="Add any extra details about the bundle"></textarea>
+                        <div class="form-help">Use this box for timing, access, or special instructions.</div>
+                    </div>
+                </div>
+
+                <div class="hero-actions">
+                    <button type="button" class="btn btn-accent" onclick="order()">Submit bundle</button>
+                    <button type="button" class="btn btn-outline-accent" onclick="coo()">Back to single service</button>
+                </div>
+            </div>
+        </section>
+
+        <div class="footer-band">
+            <strong>ECC</strong> keeps bundle requests readable from start to finish.
+        </div>
+    </main>
+</body>
+</html>
