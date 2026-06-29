@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title>ECC Admin Dashboard</title>
+
+
+    <link rel="manifest" href="manifest.json">
+
+    <meta name="theme-color" content="#111111">
+
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+
+
+
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <link rel="stylesheet" href="style.css">
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+
+
+    <script src="firebase-config.js"></script>
+
+
+    <script defer src="order.js"></script>
+
+    <script defer src="admin.js"></script>
+
+
+</head>
+
+
+
+
+<body class="page-shell">
+
+
+
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top site-nav">
+
+
+    <div class="page-container">
+
+
+
+        <div class="navbar-header">
+
+
+            <a class="navbar-brand" href="about.html">
+
+                ECC
+
+            </a>
+
+
+        </div>
+
+
+
+
+
+        <ul class="nav navbar-nav navbar-right">
+
+
+            <li>
+
+                <a href="about.html">
+
+                    About
+
+                </a>
+
+            </li>
+
+
+
+            <li>
+
+                <a href="order.html">
+
+                    Orders
+
+                </a>
+
+            </li>
+
+
+
+            <li>
+
+                <a href="#" id="logoutButton">
+
+                    Logout
+
+                </a>
+
+            </li>
+
+
+
+        </ul>
+
+
+
+
+    </div>
+
+
+</nav>
+
+
+
+
+
+
+
+<main class="page-container">
+
+
+
+
+
+
+
+    <section class="section">
+
+
+
+
+
+        <div class="section-heading">
+
+
+            <p class="section-kicker">
+
+                ADMIN PANEL
+
+            </p>
+
+
+
+
+
+            <h1 class="section-title">
+
+                Manage Orders
+
+            </h1>
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="admin-stats">
+
+
+
+
+
+            <div class="admin-stat">
+
+
+                <strong id="totalOrders">
+
+                    0
+
+                </strong>
+
+
+                <span>
+
+Total Orders
+
+</span>
+
+
+            </div>
+
+
+
+
+
+
+
+
+            <div class="admin-stat">
+
+
+                <strong id="bundleOrders">
+
+                    0
+
+                </strong>
+
+
+                <span>
+
+Bundle Orders
+
+</span>
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+            <div class="admin-stat">
+
+
+                <strong id="singleOrders">
+
+                    0
+
+                </strong>
+
+
+                <span>
+
+Single Orders
+
+</span>
+
+
+            </div>
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+        <div class="hero-actions">
+
+
+
+            <button
+
+                    id="refreshOrdersButton"
+
+                    class="btn btn-outline-accent">
+
+
+                <i class="fa fa-refresh"></i>
+
+                Refresh
+
+
+            </button>
+
+
+
+
+
+            <button
+
+                    id="clearOrdersButton"
+
+                    class="btn btn-outline-accent">
+
+
+                <i class="fa fa-trash"></i>
+
+                Clear All
+
+
+            </button>
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="admin-controls">
+
+
+
+            <input
+
+                    id="orderSearch"
+
+                    class="form-control"
+
+                    type="search"
+
+                    placeholder="Search orders...">
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="admin-meta">
+
+
+            <div
+
+                    id="firebaseStatus"
+
+                    class="admin-meta-item">
+
+                Checking Firebase...
+
+            </div>
+
+
+
+
+            <div
+
+                    id="visibleCount"
+
+                    class="admin-meta-item">
+
+                Showing 0 orders
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+        <div
+
+                id="adminOrdersList"
+
+                class="orders-board">
+
+
+
+            <div class="empty-state">
+
+                Loading orders...
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+    <div class="footer-band">
+
+
+        <strong>
+
+            ECC
+
+        </strong>
+
+
+        Admin Dashboard
+
+
+    </div>
+
+
+
+
+
+
+
+</main>
+
+
+
+
+
+
+
+
+<script>
+
+
+    if ("serviceWorker" in navigator) {
+
+        navigator.serviceWorker.register(
+            "service-worker.js"
+        );
+
+    }
+
+
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>
