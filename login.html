@@ -1,0 +1,412 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title>ECC Admin Login</title>
+
+
+
+    
+    <link rel="manifest" href="manifest.json">
+
+    <meta name="theme-color" content="#111111">
+
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+
+
+
+
+
+
+
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+
+
+    
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+   
+
+    <link rel="stylesheet" href="style.css">
+
+
+
+
+
+
+    
+
+    <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+
+
+    <script src="firebase-config.js"></script>
+
+
+
+    
+
+    <script defer src="login.js"></script>
+
+
+
+</head>
+
+
+
+
+
+<body class="page-shell">
+
+
+
+
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top site-nav">
+
+    <div class="page-container">
+
+
+        <div class="navbar-header">
+
+
+            <a class="navbar-brand" href="index.html">
+
+                ECC
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+</nav>
+
+
+
+
+
+
+
+
+
+<main class="page-container">
+
+
+
+
+
+
+    <section class="hero">
+
+
+
+
+
+
+
+        <div>
+
+
+
+
+
+            <p class="hero-eyebrow">
+
+                Admin Access
+
+            </p>
+
+
+
+
+
+            <h1>
+
+                Sign in
+
+            </h1>
+
+
+
+
+
+
+            <p class="lead-copy">
+
+                Login to manage ECC orders.
+
+            </p>
+
+
+
+
+
+
+
+
+
+            <div class="summary-card">
+
+
+
+
+
+
+                <h3>
+
+                    Admin Login
+
+                </h3>
+
+
+
+
+
+
+
+                <div class="form-group">
+
+
+                    <label for="email">
+
+                        Email
+
+                    </label>
+
+
+
+                    <input
+
+                            id="email"
+
+                            type="email"
+
+                            class="form-control"
+
+                            placeholder="Enter email"
+
+                            autocomplete="email"
+
+                    >
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+                <div class="form-group">
+
+
+                    <label for="password">
+
+                        Password
+
+                    </label>
+
+
+
+                    <input
+
+                            id="password"
+
+                            type="password"
+
+                            class="form-control"
+
+                            placeholder="Enter password"
+
+                            autocomplete="current-password"
+
+                    >
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+                <button
+
+                        id="loginButton"
+
+                        class="btn btn-accent"
+
+                        type="button">
+
+
+
+                    <i class="fa fa-lock"></i>
+
+
+                    Login
+
+
+
+                </button>
+
+
+
+
+
+
+
+                <p
+
+                        id="message"
+
+                        class="message-line">
+
+                </p>
+
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="summary-card">
+
+
+
+            <h3>
+
+                Protected
+
+            </h3>
+
+
+
+
+            <ul class="story-list">
+
+
+
+                <li>
+
+                    Only authorized admins can access this area.
+
+                </li>
+
+
+
+                <li>
+
+                    Firebase Authentication secures login.
+
+                </li>
+
+
+
+                <li>
+
+                    Orders are stored securely.
+
+                </li>
+
+
+
+            </ul>
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+    </section>
+
+
+
+
+
+
+</main>
+
+
+
+
+
+
+
+
+
+<!-- Service Worker -->
+
+<script>
+
+    if ("serviceWorker" in navigator) {
+
+
+        navigator.serviceWorker.register(
+            "service-worker.js"
+        );
+
+
+    }
+
+
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>
